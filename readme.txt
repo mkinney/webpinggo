@@ -7,6 +7,10 @@ go build
 open http://localhost:8000
 open http://localhost:8000/ping
 
+Create a personal access token:
+- Read access to actions variables, metadata, and secrets
+- Read and Write access to actions, code, commit statuses, pull requests, repository hooks, and workflows
+
 workflow for a release:
 - commit changes
 - tag release
