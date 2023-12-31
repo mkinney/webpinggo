@@ -1,3 +1,4 @@
+// simple web app
 package main
 
 import (
