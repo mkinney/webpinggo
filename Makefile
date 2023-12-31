@@ -21,7 +21,7 @@ dockerb: clean # build
 dockerr: # run
 	docker run --name wpg -d -p 8000:8000 mkinney:webpinggo
 
-dockerc: # clean
+dockerc: clean # clean
 	docker kill wpg || true
 	docker system prune
 
