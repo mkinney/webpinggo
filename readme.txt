@@ -18,3 +18,6 @@ git tag -a v0.2 -m "v0.2"
 git push origin --tags
 git push
 - create a release in GitHub for that tag, which will trigger the release github action to run
+
+docker build -t mkinney/webpinggo .
+docker run -d -p 8000:8000 mkinney:webpinggo
