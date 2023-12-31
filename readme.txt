@@ -16,5 +16,5 @@ workflow for a release:
 - tag release
 git tag -a v0.2 -m "v0.2"
 git push origin --tags
-- create a release in GitHub for that tag
 git push
+- create a release in GitHub for that tag, which will trigger the release github action to run
