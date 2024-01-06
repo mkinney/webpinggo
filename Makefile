@@ -15,15 +15,17 @@ lint:
 	golangci-lint run
 
 dockerb: clean # build
-	GOOS=linux GOARCH=amd64 go build
-	docker build -t mkinney:webpinggo .
+	docker build -t mkinney/webpinggo:latest .
 
 dockerr: # run
-	docker run --name wpg -d -p 8000:8000 mkinney:webpinggo
+	docker run --name wpg -d -p 8000:8000 mkinney/webpinggo
 
 dockerc: clean # clean
 	docker kill wpg || true
 	docker system prune
+
+push: dockerb
+	docker push mkinney/webpinggo:latest
 
 FORCE: ;
 
