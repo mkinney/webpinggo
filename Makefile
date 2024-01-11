@@ -1,5 +1,8 @@
 .DEFAULT_GOAL := fmt
 
+# get the most recent annotated tag
+TAG = $(shell git describe --abbrev=0)
+
 .PHONY:fmt build
 
 fmt:
@@ -16,6 +19,7 @@ lint:
 
 dockerb: clean # build
 	docker build -t mkinney/webpinggo:latest .
+	docker build -t mkinney/webpinggo:${TAG} .
 
 dockerr: # run
 	docker run --name wpg -d -p 8000:8000 mkinney/webpinggo
@@ -26,6 +30,7 @@ dockerc: clean # clean
 
 push: dockerb
 	docker push mkinney/webpinggo:latest
+	docker push mkinney/webpinggo:${TAG}
 
 FORCE: ;
 
