@@ -23,3 +23,5 @@ docker build -t mkinney/webpinggo .
 docker run -d -p 8000:8000 mkinney:webpinggo
 
 make push
+
+brew install hadolint

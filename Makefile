@@ -15,7 +15,10 @@ clean:
 	@rm webpinggo 2> /dev/null || true
 
 lint:
+	# go lint
 	golangci-lint run
+	# docker lint
+	hadolint Dockerfile
 
 dockerb: clean # build
 	docker build -t mkinney/webpinggo:latest .

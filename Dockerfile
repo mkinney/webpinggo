@@ -3,15 +3,13 @@ WORKDIR /app
 COPY main.go go.mod ./
 RUN GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -o app .
 
-FROM alpine:latest
+FROM alpine:3.19.0
 LABEL org.opencontainers.image.source=https://github.com/mkinney/webpinggo
 LABEL maintainer="mike.kinney@gmail.com"
-RUN apk update \
-	&& apk add ca-certificates \
-	&& update-ca-certificates \
-	&& apk add shadow \
+RUN apk add --no-cache shadow=4.14.2-r0 \
 	&& groupadd -r app \
-	&& useradd -r -g app -s /sbin/nologin -c "Docker image user" app
+	&& useradd -r -g app -s /sbin/nologin -c "Docker image user" app \
+	&& rm -f "/var/cache/apk/*"
 
 USER app
 WORKDIR /app
